@@ -119,6 +119,17 @@
             margin-right: auto;
         }
 
+        .hero-image {
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
         /* 作品集區塊 */
         .portfolio {
             background-color: #fff;
@@ -348,6 +359,10 @@
             .about, .contact-container {
                 gap: 40px;
             }
+
+            .hero-image {
+                max-width: 90%;
+            }
         }
 
         @media (max-width: 576px) {
@@ -395,6 +410,10 @@
     <section class="hero">
         <div class="hero-content">
             <h1>服裝設計師</h1>
+            <!-- 在此處添加了hero-image區塊 -->
+            <div class="hero-image">
+                <img src="S_6160391_0.jpg" alt="服裝設計作品展示" onerror="this.src='https://via.placeholder.com/800x500/f5f5f5/333?text=設計作品'">
+            </div>
             <p>創造獨特的時尚理念，透過設計賦予服裝靈魂與故事。專注於將美學與實用性完美融合，打造具有個人特色的服裝系列。</p>
         </div>
     </section>
@@ -551,6 +570,7 @@
         });
     </script>
 </body>
+</html>
 </html>
     </script>
 </body>
