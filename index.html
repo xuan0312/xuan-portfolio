@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服裝設計師作品集</title>
+    <style>
+        /* 基本設定 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+
+        /* 導航欄 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #222;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        /* 區塊共用樣式 */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #000;
+            margin: 15px auto 0;
+        }
+
+        /* 首頁區塊 */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: #f0f0f0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #333;
+        }
+
+        /* 作品集區塊 */
+        .portfolio {
+            background-color: #fff;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-category {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        /* 關於我區塊 */
+        .about {
+            background-color: #f8f8f8;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .about h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .skill-tag {
+            background-color: #eee;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        /* 聯絡區塊 */
+        .contact {
+            background-color: #fff;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: #555;
+        }
+
+        .footer-text {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 導航欄 -->
+    <header>
+        <nav>
+            <a href="#" class="logo">您的姓名</a>
+            <ul class="nav-links">
+                <li><a href="#portfolio">作品集</a></li>
+                <li><a href="#about">關於我</a></li>
+                <li><a href="#contact">聯絡</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 首頁區塊 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>您的姓名<br>服裝設計師</h1>
+            <p>創造獨特、充滿靈感的時尚設計，展現個性與風格。</p>
+            <a href="#portfolio" class="btn">查看作品</a>
+        </div>
+    </section>
+
+    <!-- 作品集區塊 -->
+    <section id="portfolio" class="portfolio">
+        <h2 class="section-title">作品集</h2>
+        <div class="portfolio-grid">
+            <!-- 作品項目 1 -->
+            <div class="portfolio-item">
+                <img src="/api/placeholder/600/800" alt="時裝設計作品">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">夏季系列</h3>
+                    <p class="portfolio-category">2024春夏</p>
+                </div>
+            </div>
+            <!-- 作品項目 2 -->
+            <div class="portfolio-item">
+                <img src="/api/placeholder/600/800" alt="時裝設計作品">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">城市風格</h3>
+                    <p class="portfolio-category">休閒服飾</p>
+                </div>
+            </div>
+            <!-- 作品項目 3 -->
+            <div class="portfolio-item">
+                <img src="/api/placeholder/600/800" alt="時裝設計作品">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">優雅晚裝</h3>
+                    <p class="portfolio-category">禮服設計</p>
+                </div>
+            </div>
+            <!-- 作品項目 4 -->
+            <div class="portfolio-item">
+                <img src="/api/placeholder/600/800" alt="時裝設計作品">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">街頭潮流</h3>
+                    <p class="portfolio-category">2023秋冬</p>
+                </div>
+            </div>
+            <!-- 作品項目 5 -->
+            <div class="portfolio-item">
+                <img src="/api/placeholder/600/800" alt="時裝設計作品">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">環保系列</h3>
+                    <p class="portfolio-category">永續時尚</p>
+                </div>
+            </div>
+            <!-- 作品項目 6 -->
+            <div class="portfolio-item">
+                <img src="/api/placeholder/600/800" alt="時裝設計作品">
+                <div class="portfolio-overlay">
+                    <h3 class="portfolio-title">簡約主義</h3>
+                    <p class="portfolio-category">商務服裝</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 關於我區塊 -->
+    <section id="about" class="about">
+        <div class="about-image">
+            <img src="/api/placeholder/400/600" alt="設計師照片">
+        </div>
+        <div class="about-content">
+            <h2 class="section-title">關於我</h2>
+            <h3>服裝設計師 & 時尚創意者</h3>
+            <p>在這裡填寫您的個人介紹，包括您的教育背景、設計理念、專業經驗以及您對時尚的熱情。</p>
+            <p>描述您的設計風格和專長領域，以及您在服裝設計行業中的獨特視角和創新思維。</p>
+            <p>也可以分享您的靈感來源和對未來時尚趨勢的洞察。</p>
+            
+            <div class="skills">
+                <span class="skill-tag">時裝設計</span>
+                <span class="skill-tag">面料開發</span>
+                <span class="skill-tag">服裝打版</span>
+                <span class="skill-tag">時尚插畫</span>
+                <span class="skill-tag">永續時尚</span>
+                <span class="skill-tag">系列規劃</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 聯絡區塊 -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">聯絡我</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>讓我們聊聊您的項目</h3>
+                <p>無論您是尋找合作機會、客製化設計服務，或者只是想了解更多關於我的作品，都歡迎與我聯繫。</p>
+                
+                <div class="contact-detail">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <strong>電子郵件</strong>
+                        <p>your.email@example.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-detail">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <strong>電話</strong>
+                        <p>+886 912 345 678</p>
+                    </div>
+                </div>
+                
+                <div class="contact-detail">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <strong>地址</strong>
+                        <p>台北市信義區信義路五段7號</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">電子郵件</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">主旨</label>
+                        <input type="text" id="subject" name="subject" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">訊息</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">發送訊息</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-link">FB</a>
+            <a href="#" class="social-link">IG</a>
+            <a href="#" class="social-link">BE</a>
+            <a href="#" class="social-link">LI</a>
+        </div>
+        <p class="footer-text">© 2025 您的姓名 - 服裝設計師。保留所有權利。</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 平滑滾動效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
