@@ -160,6 +160,18 @@
             color: #777;
         }
 
+        /* 作品詳情連結 */
+        .portfolio-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .view-more {
+            margin-top: 40px;
+            text-align: center;
+        }
+
         /* 關於我區塊 */
         .about {
             background-color: #fff;
@@ -370,7 +382,7 @@
     <!-- 導航欄 -->
     <header>
         <nav>
-            <a href="#" class="logo">YOUR NAME</a>
+            <a href="index.html" class="logo">YOUR NAME</a>
             <ul class="nav-links">
                 <li><a href="#portfolio">作品集</a></li>
                 <li><a href="#about">關於</a></li>
@@ -393,40 +405,55 @@
         <div class="portfolio-grid">
             <!-- 作品項目 1 -->
             <div class="portfolio-item">
-                <img src="images/portfolio1.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品1'">
-                <div class="portfolio-title">春夏系列</div>
-                <div class="portfolio-category">2024</div>
+                <a href="portfolio/spring-summer.html" class="portfolio-link">
+                    <img src="images/portfolio1.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品1'">
+                    <div class="portfolio-title">春夏系列</div>
+                    <div class="portfolio-category">2024</div>
+                </a>
             </div>
             <!-- 作品項目 2 -->
             <div class="portfolio-item">
-                <img src="images/portfolio2.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品2'">
-                <div class="portfolio-title">城市風格</div>
-                <div class="portfolio-category">休閒服飾</div>
+                <a href="portfolio/urban-style.html" class="portfolio-link">
+                    <img src="images/portfolio2.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品2'">
+                    <div class="portfolio-title">城市風格</div>
+                    <div class="portfolio-category">休閒服飾</div>
+                </a>
             </div>
             <!-- 作品項目 3 -->
             <div class="portfolio-item">
-                <img src="images/portfolio3.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品3'">
-                <div class="portfolio-title">晚宴系列</div>
-                <div class="portfolio-category">禮服設計</div>
+                <a href="portfolio/evening-collection.html" class="portfolio-link">
+                    <img src="images/portfolio3.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品3'">
+                    <div class="portfolio-title">晚宴系列</div>
+                    <div class="portfolio-category">禮服設計</div>
+                </a>
             </div>
             <!-- 作品項目 4 -->
             <div class="portfolio-item">
-                <img src="images/portfolio4.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品4'">
-                <div class="portfolio-title">秋冬系列</div>
-                <div class="portfolio-category">2023</div>
+                <a href="portfolio/fall-winter.html" class="portfolio-link">
+                    <img src="images/portfolio4.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品4'">
+                    <div class="portfolio-title">秋冬系列</div>
+                    <div class="portfolio-category">2023</div>
+                </a>
             </div>
             <!-- 作品項目 5 -->
             <div class="portfolio-item">
-                <img src="images/portfolio5.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品5'">
-                <div class="portfolio-title">永續系列</div>
-                <div class="portfolio-category">環保時尚</div>
+                <a href="portfolio/sustainable.html" class="portfolio-link">
+                    <img src="images/portfolio5.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品5'">
+                    <div class="portfolio-title">永續系列</div>
+                    <div class="portfolio-category">環保時尚</div>
+                </a>
             </div>
             <!-- 作品項目 6 -->
             <div class="portfolio-item">
-                <img src="images/portfolio6.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品6'">
-                <div class="portfolio-title">極簡主義</div>
-                <div class="portfolio-category">都會風格</div>
+                <a href="portfolio/minimalism.html" class="portfolio-link">
+                    <img src="images/portfolio6.jpg" alt="時裝設計作品" onerror="this.src='https://via.placeholder.com/600x800/f5f5f5/333?text=作品6'">
+                    <div class="portfolio-title">極簡主義</div>
+                    <div class="portfolio-category">都會風格</div>
+                </a>
             </div>
+        </div>
+        <div class="view-more">
+            <a href="all-works.html" class="btn">查看更多作品</a>
         </div>
     </section>
 
@@ -449,6 +476,10 @@
                 <span class="skill-tag">永續時尚</span>
                 <span class="skill-tag">系列規劃</span>
             </div>
+            
+            <div style="margin-top: 30px;">
+                <a href="about-detail.html" class="btn">了解更多</a>
+            </div>
         </div>
     </section>
 
@@ -468,9 +499,6 @@
                     <strong>電話:</strong> +886 912 345 678
                 </div>
                 
-                <div class="contact-detail">
-                    <strong>工作室:</strong> 台北市信義區
-                </div>
             </div>
             
             <div class="contact-form">
@@ -522,6 +550,9 @@
                 });
             });
         });
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
