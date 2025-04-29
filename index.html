@@ -409,9 +409,9 @@
     <!-- 首頁區塊 -->
     <section class="hero">
         <div class="hero-content">
-            <!-- 修正圖片路徑使用相對路徑 -->
+            <!-- 修改圖片路徑，使用已有的S_6160391_0.jpg -->
             <div class="hero-image">
-                <img src="images/S_6160391_0.jpg" alt="服裝設計作品展示" onerror="this.src='images/placeholder.jpg'">
+                <img src="images/S_6160391_0.jpg" alt="服裝設計作品展示">
             </div>
             <h1>服裝設計師</h1>
             <p>創造獨特的時尚理念，透過設計賦予服裝靈魂與故事。專注於將美學與實用性完美融合，打造具有個人特色的服裝系列。</p>
@@ -422,10 +422,10 @@
     <section id="portfolio" class="portfolio">
         <h2 class="section-title">作品集</h2>
         <div class="portfolio-grid">
-            <!-- 作品項目 1 - 修正圖片路徑 -->
+            <!-- 作品項目 1 - 修改所有圖片路徑使用S_6160391_0.jpg -->
             <div class="portfolio-item">
                 <a href="portfolio/spring-summer.html" class="portfolio-link">
-                    <img src="images/portfolio1.jpg" alt="時裝設計作品" onerror="this.src='images/placeholder.jpg'">
+                    <img src="images/S_6160391_0.jpg" alt="時裝設計作品">
                     <div class="portfolio-title">春夏系列</div>
                     <div class="portfolio-category">2024</div>
                 </a>
@@ -433,7 +433,7 @@
             <!-- 作品項目 2 -->
             <div class="portfolio-item">
                 <a href="portfolio/urban-style.html" class="portfolio-link">
-                    <img src="images/portfolio2.jpg" alt="時裝設計作品" onerror="this.src='images/placeholder.jpg'">
+                    <img src="images/S_6160391_0.jpg" alt="時裝設計作品">
                     <div class="portfolio-title">城市風格</div>
                     <div class="portfolio-category">休閒服飾</div>
                 </a>
@@ -441,7 +441,7 @@
             <!-- 作品項目 3 -->
             <div class="portfolio-item">
                 <a href="portfolio/evening-collection.html" class="portfolio-link">
-                    <img src="images/portfolio3.jpg" alt="時裝設計作品" onerror="this.src='images/placeholder.jpg'">
+                    <img src="images/S_6160391_0.jpg" alt="時裝設計作品">
                     <div class="portfolio-title">晚宴系列</div>
                     <div class="portfolio-category">禮服設計</div>
                 </a>
@@ -449,7 +449,7 @@
             <!-- 作品項目 4 -->
             <div class="portfolio-item">
                 <a href="portfolio/fall-winter.html" class="portfolio-link">
-                    <img src="images/portfolio4.jpg" alt="時裝設計作品" onerror="this.src='images/placeholder.jpg'">
+                    <img src="images/S_6160391_0.jpg" alt="時裝設計作品">
                     <div class="portfolio-title">秋冬系列</div>
                     <div class="portfolio-category">2023</div>
                 </a>
@@ -457,7 +457,7 @@
             <!-- 作品項目 5 -->
             <div class="portfolio-item">
                 <a href="portfolio/sustainable.html" class="portfolio-link">
-                    <img src="images/portfolio5.jpg" alt="時裝設計作品" onerror="this.src='images/placeholder.jpg'">
+                    <img src="images/S_6160391_0.jpg" alt="時裝設計作品">
                     <div class="portfolio-title">永續系列</div>
                     <div class="portfolio-category">環保時尚</div>
                 </a>
@@ -465,7 +465,7 @@
             <!-- 作品項目 6 -->
             <div class="portfolio-item">
                 <a href="portfolio/minimalism.html" class="portfolio-link">
-                    <img src="images/portfolio6.jpg" alt="時裝設計作品" onerror="this.src='images/placeholder.jpg'">
+                    <img src="images/S_6160391_0.jpg" alt="時裝設計作品">
                     <div class="portfolio-title">極簡主義</div>
                     <div class="portfolio-category">都會風格</div>
                 </a>
@@ -478,9 +478,9 @@
 
     <!-- 關於我區塊 -->
     <section id="about" class="about">
-        <!-- 修正圖片路徑 -->
+        <!-- 修改圖片路徑使用S_6160391_0.jpg -->
         <div class="about-image">
-            <img src="images/profile.jpg" alt="設計師照片" onerror="this.src='images/placeholder.jpg'">
+            <img src="images/S_6160391_0.jpg" alt="設計師照片">
         </div>
         <div class="about-content">
             <h2 class="section-title">關於</h2>
@@ -567,6 +567,18 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+
+        // 檢查圖片是否存在，如果不存在則回報錯誤
+        window.addEventListener('load', function() {
+            console.log('頁面已完全載入');
+            document.querySelectorAll('img').forEach(img => {
+                if (!img.complete || img.naturalHeight === 0) {
+                    console.log('圖片載入失敗:', img.src);
+                } else {
+                    console.log('圖片載入成功:', img.src);
+                }
             });
         });
     </script>
